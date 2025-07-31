@@ -62,7 +62,6 @@ public class ModelProcessorImpl<T extends DataModelObject<T>> implements ModelPr
         return Mono.just(loggerFactory.getJsonLogger(log)
                         .addDebug(QueryParamConstants.ALLOW_DRAFT, allowDraft))
                 .flatMap(logger -> validateModel(model, allowDraft)
-                        .map(validatedModel -> validatedModel.setId(UUID.randomUUID()))
                         .flatMap(commandService::save)
                         .flatMap(eventProducer::modelCreatedEvent)
                         .doOnError(throwable -> logger

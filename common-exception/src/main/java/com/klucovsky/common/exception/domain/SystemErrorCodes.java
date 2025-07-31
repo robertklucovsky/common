@@ -39,5 +39,5 @@ public class SystemErrorCodes {
     public static final ErrorDetail E00_012 =
             ErrorDetail.of(ErrorType.SYSTEM, "00_012", "Date format not recognized");
     public static final ErrorDetail E00_013 =
-            ErrorDetail.of(ErrorType.SYSTEM, "00_013", "Authentication failed: Jwt expired");
+            ErrorDetail.of(ErrorType.SYSTEM, "00_013", "Request not allowed");
 }

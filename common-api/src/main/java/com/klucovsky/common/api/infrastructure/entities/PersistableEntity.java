@@ -6,12 +6,12 @@
 
 package com.klucovsky.common.api.infrastructure.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
-import org.springframework.data.annotation.*;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.domain.Persistable;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
@@ -22,32 +22,12 @@ import java.util.UUID;
 public abstract class PersistableEntity<T> implements Persistable<UUID> {
 
     @CreatedDate
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @CreatedBy
     private String createdBy;
 
-    @LastModifiedDate
-    private Date modifiedAt;
-
-    @LastModifiedBy
-    private String modifiedBy;
-
-    @Version
-    private Long concurrencyToken;
-
-    @Override
-    @JsonIgnore
-    public boolean isNew() {
-        return getCreatedAt() == null;
-    }
-
-    public T setConcurrencyToken(Long concurrencyToken) {
-        this.concurrencyToken = concurrencyToken;
-        return (T) this;
-    }
-
-    public T setCreatedAt(Date createdAt) {
+    public T setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
         return (T) this;
     }
@@ -57,13 +37,8 @@ public abstract class PersistableEntity<T> implements Persistable<UUID> {
         return (T) this;
     }
 
-    public T setModifiedAt(Date modifiedAt) {
-        this.modifiedAt = modifiedAt;
-        return (T) this;
-    }
-
-    public T setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
-        return (T) this;
+    @Override
+    public boolean isNew() {
+        return getId() == null;
     }
 }

@@ -27,16 +27,6 @@ public interface EntityMapper<S extends DataModelObject<S>, T extends Persistabl
     T map(S model);
 
     /**
-     * Map {@link DataModelObject model} to {@link PersistableEntity entity}
-     *
-     * @param entity           {@link PersistableEntity entity}
-     * @param model            {@link DataModelObject model}
-     * @param concurrencyToken entity version in db
-     * @return mapped {@link PersistableEntity entity}
-     */
-    T update(T entity, S model, Long concurrencyToken);
-
-    /**
      * Map {@link PersistableEntity entity} to {@link DataModelObject model}
      *
      * @param entity {@link PersistableEntity entity}
