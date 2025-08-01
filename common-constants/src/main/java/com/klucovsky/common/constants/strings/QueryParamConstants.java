@@ -17,4 +17,8 @@ public class QueryParamConstants {
     public static final String SORT = "sort";
     public static final String ALLOW_DRAFT = "allowDraft";
     public static final String ROLE = "role";
+    public static final String ENTITY = "entity";
+    public static final String DOMAIN = "domain";
+    public static final String AFTER = "after";
+    public static final String BEFORE = "before";
 }
